@@ -15,11 +15,13 @@ void setup() {
 
 void loop() {
 
+  lcd.setCursor(0, 0);
   valeur = analogRead(A0); // On lit les données du pin A0 
   tension = (valeur*5.00/1023.00); // Calul de la tension avec les paramètres: (5V = 1023) donc : (valeur * 5) / 1023
   Serial.print("Tension : "); // Impression du message sur le moniteur série
   Serial.print(tension);
   Serial.println(" Volts");
+  lcd.print("Tension :");
   lcd.print(tension); // Impression du message sur le LCD
   lcd.print(" V");
   delay(1000); // Attente de 1 sec entre chaque rafraichissement
