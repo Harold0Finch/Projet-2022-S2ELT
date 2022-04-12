@@ -19,7 +19,7 @@ void setup() {
   
 }
 
-void loop() {
+// void loop() {
 	BP = digitalRead(bouton);
 	if (BP! = etat_BP) {
 		
