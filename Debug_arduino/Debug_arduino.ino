@@ -2,7 +2,7 @@
 #include <LiquidCrystal.h>
 
 // Defines the LCD's parameters: (rs, enable, d4, d5, d6, d7)
-LiquidCrystal lcd(9, 8, 5, 4, 3, 2);
+LiquidCrystal lcd(7, 6, 5, 4, 3, 2);
 int mesure_V = 0; // Variable où on stock la valeur de la mesure de tension
 int mesure_A = 0; // Variable où on stock la valeur de la mesure d'intensité
 float tension = 0; // Variable où on stock la valeur de la tension
@@ -168,5 +168,5 @@ void normal() {
 	lcd.setCursor(0, 1);
 	amps_LCD();
 	delay(refresh);
-  lcd.clear();
+    lcd.clear();
 }
