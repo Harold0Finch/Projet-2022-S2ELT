@@ -1,9 +1,9 @@
 # Projet kart
  Projet final BTS Charles Jully 2022
 
-Le dépot est ici pour les différents bouts de codes utilisé dans le projet.
+Le dépot est ici pour rassembler les différents bouts de codes utilisé dans le projet.
 
-Tout les codes ne sont pas de moi.
+La majorité des codes ne sont pas de moi, je l'ai ai seulement assemblés et adaptés à mes besoins.
 
 Usefull links:
 HC-05 Bluetooth : https://microdigisoft.com/interfacing-hc-05-bluetooth-module-with-arduino/
