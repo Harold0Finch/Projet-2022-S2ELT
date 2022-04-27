@@ -8,12 +8,12 @@ int mesure_A = 0; // Variable où on stock la valeur de la mesure d'intensité
 float tension = 0; // Variable où on stock la valeur de la tension
 float intensite = 0; // Variable où on stock la valeur de l'intensité
 const int code = 98; // code pour entrer en mode debug ( b )
-const int fast_debug = 102;
+const int fast_debug = 102; // code pour entrer en mode debug rapide (uniquement en cmd) (f)
 int incode = 0;
 int refresh = 300; // Intervalle de rafraichissement des valeurs
 
-const int facteur_V = 1; // Facteur de réduction du pont diviseur de tension
-const int facteur_A = 1; // Facteur de réduction de la sonde de courant
+const float facteur_V = 10.9704; // Facteur de réduction du pont diviseur de tension
+const float facteur_A = 1; // Facteur de réduction de la sonde de courant
 
 void setup() {
   
