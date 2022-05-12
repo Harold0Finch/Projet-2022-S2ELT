@@ -5,15 +5,17 @@
 LiquidCrystal lcd(7, 6, 5, 4, 3, 2);
 int mesure_V = 0; // Variable où on stock la valeur de la mesure de tension
 int mesure_A = 0; // Variable où on stock la valeur de la mesure d'intensité
+int mesure_0A = 0; // Variable où on stock la valeur de la mesure pour laquelle I = 0 A
 float tension = 0; // Variable où on stock la valeur de la tension
 float intensite = 0; // Variable où on stock la valeur de l'intensité
+float intensite_1 = 0;
 const int code = 98; // code pour entrer en mode debug ( b )
 const int fast_debug = 102; // code pour entrer en mode debug rapide (uniquement en cmd) (f)
 int incode = 0;
 int refresh = 300; // Intervalle de rafraichissement des valeurs
 
 const float facteur_V = 10.9704; // Facteur de réduction du pont diviseur de tension
-const float facteur_A = 0.625; // Facteur de réduction de la sonde de courant
+const float facteur_A = 127.875; // Facteur de réduction de la sonde de courant
 
 void setup() {
 
@@ -107,6 +109,10 @@ void loop() {
 		  Serial.println("mesure A on A1");
 		  Serial.println(mesure_A);
 
+      mesure_0A = analogRead(A2); // On lit les données du pin A0
+		  Serial.println("mesure 0A on A2");
+		  Serial.println(mesure_0A);
+
 		  Serial.println("facteur_A");
 		  Serial.println(facteur_A);
 
@@ -139,7 +145,8 @@ void volts_LCD() {
 void amps_LCD() {
   mesure_A = analogRead(A1); // On lit les données du pin A1
   mesure_0A = analogRead(A2); // On lit les données du pin A2 pour obtenir la valeur pour laquelle I = 0
-  intensite = ((facteur_A*mesure_A/100)-mesure_0A); // Calul de la tension avec les paramètres: (5V = 1023) donc : (valeur * 5) / 1023
+  intensite_1 = (mesure_A-mesure_0A);
+  intensite = (intensite_1*100/facteur_A); // Calul de la tension avec les paramètres: (5V = 1023) donc : (valeur * 5) / 1023
   Serial.print("Courant : "); // Impression du message sur le moniteur série
   Serial.print(intensite);
   Serial.println(" Ampere");
@@ -151,7 +158,8 @@ void amps_LCD() {
 void amps() {
   mesure_A = analogRead(A1); // On lit les données du pin A1
   mesure_0A = analogRead(A2); // On lit les données du pin A2 pour obtenir la valeur pour laquelle I = 0
-  intensite = ((facteur_A*mesure_A/100)-mesure_0A); // Calul de la tension avec les paramètres: (5V = 1023) donc : (valeur * 5) / 1023
+  intensite_1 = (mesure_A-mesure_0A);
+  intensite = (intensite_1*100/facteur_A); // Calul de la tension avec les paramètres: (5V = 1023) donc : (valeur * 5) / 1023
   lcd.print("Courant :");
   lcd.print(intensite); // Impression du message sur le LCD
   lcd.print(" A");
