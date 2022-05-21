@@ -10,12 +10,12 @@ float mesure_0A = 0; // Variable où on stock la valeur de la mesure pour laquel
 float tension = 0; // Variable où on stock la valeur de la tension
 float intensite = 0; // Variable où on stock la valeur de l'intensité
 float intensite_1 = 0;
-const int code = 98; // code pour entrer en mode debug ( b )
+const int code = 98; // code pour entrer en mode debug (uniquement en cmd) (b)
 const int fast_debug = 102; // code pour entrer en mode debug rapide (uniquement en cmd) (f)
 int incode = 0;
-int refresh = 350; // Intervalle de rafraichissement des valeurs
+const int refresh = 350; // Intervalle de rafraichissement des valeurs
 
-const float facteur_V = 10.9704; // Facteur de réduction du pont diviseur de tension
+const float facteur_V = 11; // Facteur de réduction du pont diviseur de tension
 const float facteur_A = 127.875; // Facteur de réduction de la sonde de courant
 
 SoftwareSerial mySerial(11,12);
@@ -104,7 +104,7 @@ void loop() {
 		  lcd.clear();
 
       intensite_1 = (mesure_A-mesure_0A);
-      lcd.print("Difference A2 / A1");
+      lcd.print("Difference A2/A1");
 		  lcd.setCursor(0, 1);
 		  lcd.print(intensite_1);
 		  Serial.println("Difference A2 / A1");
