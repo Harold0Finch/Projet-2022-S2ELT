@@ -199,7 +199,7 @@ void volts_LCD() {
   Serial.print("Tension : "); // Impression du message sur le moniteur série
   Serial.print(tension);
   Serial.println(" Volts");
-  mySerial.print("Tension : "); // Impression du message sur le moniteur série
+  mySerial.print("Tension : "); // Envoi du message par bluetooth
   mySerial.print(tension);
   mySerial.println(" Volts");
   lcd.print("Tension :");
@@ -211,11 +211,11 @@ void amps_LCD() {
   mesure_A = analogRead(A1); // On lit les données du pin A1
   mesure_0A = analogRead(A2); // On lit les données du pin A2 pour obtenir la valeur pour laquelle I = 0
   intensite_1 = (mesure_A-mesure_0A);
-  intensite = (intensite_1*100/facteur_A); // Calul de la tension avec les paramètres: (5V = 1023) donc : (valeur * 5) / 1023
+  intensite = (intensite_1*100/facteur_A); // Calul du courant avec les paramètres: (0A = mesure-0A) donc : (valeur * 5) / 1023
   Serial.print("Courant : "); // Impression du message sur le moniteur série
   Serial.print(intensite);
   Serial.println(" Ampere");
-  mySerial.print("Courant : "); // Impression du message sur le moniteur série
+  mySerial.print("Courant : "); // Envoi du message par bluetooth
   mySerial.print(intensite);
   mySerial.println(" Ampere");
   lcd.print("Courant :");
