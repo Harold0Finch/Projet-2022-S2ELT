@@ -15,7 +15,7 @@ const int fast_debug = 102; // code pour entrer en mode debug rapide (uniquement
 int incode = 0;
 const int refresh = 350; // Intervalle de rafraichissement des valeurs
 
-const float facteur_V = 11; // Facteur de réduction du pont diviseur de tension
+const float facteur_V = 10.333333; // Facteur de réduction du pont diviseur de tension
 const float facteur_A = 127.875; // Facteur de réduction de la sonde de courant
 
 SoftwareSerial mySerial(11,12);
@@ -210,7 +210,7 @@ void volts_LCD() {
 void amps_LCD() {
   mesure_A = analogRead(A1); // On lit les données du pin A1
   mesure_0A = analogRead(A2); // On lit les données du pin A2 pour obtenir la valeur pour laquelle I = 0
-  intensite_1 = (mesure_A-mesure_0A);
+  intensite_1 = (mesure_0A-mesure_A);
   intensite = (intensite_1*100/facteur_A); // Calul du courant avec les paramètres: (0A = mesure-0A) donc : (valeur * 5) / 1023
   Serial.print("Courant : "); // Impression du message sur le moniteur série
   Serial.print(intensite);
